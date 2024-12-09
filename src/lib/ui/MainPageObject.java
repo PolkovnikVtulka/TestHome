@@ -22,7 +22,7 @@ public class MainPageObject {
         skip.click();
     }
 
-    public static WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds) {
+    public WebElement waitForElementPresent(By by, String errorMessage, long timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(errorMessage + "\n");
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
@@ -94,7 +94,7 @@ public class MainPageObject {
 
     }
 
-    public static void swipeLeft(By by, String errorMassage) {
+    public void swipeLeft(By by, String errorMassage) {
         WebElement element = waitForElementPresent(by, errorMassage, 5);
 
         int left_x = element.getLocation().getX();
