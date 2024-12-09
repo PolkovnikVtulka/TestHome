@@ -26,8 +26,6 @@ public class TestHome extends CoreTestCase {
         SearchpageObject.clickSkip();
         SearchpageObject.initSearchInput();
         SearchpageObject.typeSearchLine("Java");
-
-
     }
 
     @Test
@@ -40,7 +38,6 @@ public class TestHome extends CoreTestCase {
         SearchpageObject.waitForCancelButtonToAppear();
         SearchpageObject.clickCanselSearch();
         SearchpageObject.waitForCancelButtonToDisappear();
-
     }
 
     @Test
@@ -68,11 +65,16 @@ public class TestHome extends CoreTestCase {
         SearchpageObject.typeSearchLine("Appium");
         SearchpageObject.clickByArticleWithSubstring("Automation for Apps");
         ArticlePageobject.swipeFooter();
-
     }
 
         @Test
         public void testSave() {
+
+            SearchPageObject SearchpageObject = new SearchPageObject(driver);
+            ArticlePageObject ArticlePageobject = new ArticlePageObject(driver);
+            SearchpageObject.clickSkip();
+            SearchpageObject.initSearchInput();
+            SearchpageObject.typeSearchLine("Appium");
 
             MainPageObject.waitForElementAndClick(
                     By.id("Navigate up"), "не нажали на стролку", 5);
@@ -104,8 +106,6 @@ public class TestHome extends CoreTestCase {
             Assert.assertEquals("статьи разные", "Object-oriented programming language", headerAttribute);
 
             driver.rotate(ScreenOrientation.LANDSCAPE);
-
-
         }
 
         @Test
@@ -127,8 +127,6 @@ public class TestHome extends CoreTestCase {
                     5);
 
             MainPageObject.assertElementPresent(By.xpath("//*[@content-desc = 'Java (programming language)']"), "не увидели статью");
-
-
         }
 
 
