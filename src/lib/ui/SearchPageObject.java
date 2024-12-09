@@ -8,11 +8,11 @@ public class SearchPageObject extends MainPageObject {
     //Константы
     private static final String
             BUTTON_SKIP = "//*[contains(@text,'Skip')]",
-            BUTTON_SAVE = "org.wikipedia:id/page_save",
             SEARCH_INIT_ELEMENT = "//*[contains(@text, 'Search Wikipedia')]",
             SEARCH_INPUT = "org.wikipedia:id/search_src_text",
             SEARCH_RESULT_BY_SUBSTRING_TPL = "//*[contains(@text, '{SUBSTRING}')]",
             SEARCH_CANSEL_BUTTON = "Navigate up";
+
 
 
     public SearchPageObject(AppiumDriver driver) {

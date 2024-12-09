@@ -22,8 +22,9 @@ public class CoreTestCase extends TestCase {
         capabilities.setCapability("appium:platformVersion", "8.0");
         capabilities.setCapability("appium:appPackage", "org.wikipedia");
         capabilities.setCapability("appium:appActivity", ".main.MainActivity");
-        capabilities.setCapability("appium:app", "C:/JavaAppiumAutomation/JavaAppiumAutomation/apks/org.wikipedia_50492_apps.evozi.com.apk");
+        capabilities.setCapability("appium:app", "C:/JavaAppiumAutomation/TestHome/apks/org.wikipedia_50492_apps.evozi.com.apk");
         driver = new AndroidDriver(new URL(AppiumURL), capabilities); // /wd/hub
+        this.rotateScreenPortrait();
     }
 
     @Override
@@ -32,5 +33,14 @@ public class CoreTestCase extends TestCase {
         driver.rotate(ScreenOrientation.PORTRAIT);
         driver.quit();
         super.tearDown();
+    }
+    protected void rotateScreenPortrait(){
+        driver.rotate(ScreenOrientation.PORTRAIT);
+    }
+    protected void rotateScreenLandscape(){
+        driver.rotate(ScreenOrientation.LANDSCAPE);
+    }
+    protected void backgroundUp(int seconds){
+        driver.runAppInBackground(seconds);
     }
 }
