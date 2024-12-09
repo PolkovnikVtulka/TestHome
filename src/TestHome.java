@@ -9,7 +9,7 @@ import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 
 
-public class Test4_3 extends CoreTestCase {
+public class TestHome extends CoreTestCase {
 
     public MainPageObject MainPageObject;
 
