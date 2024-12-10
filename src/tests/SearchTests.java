@@ -1,8 +1,8 @@
 package tests;
-
 import lib.CoreTestCase;
 import lib.ui.SearchPageObject;
 import org.junit.Test;
+
 
 public class SearchTests extends CoreTestCase {
     @Test
@@ -24,5 +24,16 @@ public class SearchTests extends CoreTestCase {
         SearchpageObject.waitForCancelButtonToAppear();
         SearchpageObject.clickCanselSearch();
         SearchpageObject.waitForCancelButtonToDisappear();
+    }
+
+    @Test
+    public void testSearchTitleAndDescription() {
+        SearchPageObject SearchpageObject = new SearchPageObject(driver);
+        SearchpageObject.clickSkip();
+        SearchpageObject.initSearchInput();
+        SearchpageObject.typeSearchLine("Java");
+        SearchpageObject.waitForElementByTitleAndDescription("Java (programming language)", "Object-oriented programming language");
+
+
     }
 }

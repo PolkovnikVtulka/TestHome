@@ -1,6 +1,7 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class SearchPageObject extends MainPageObject {
@@ -11,13 +12,14 @@ public class SearchPageObject extends MainPageObject {
             SEARCH_INIT_ELEMENT = "//*[contains(@text, 'Search Wikipedia')]",
             SEARCH_INPUT = "org.wikipedia:id/search_src_text",
             SEARCH_RESULT_BY_SUBSTRING_TPL = "//*[contains(@text, '{SUBSTRING}')]",
-            SEARCH_CANSEL_BUTTON = "Navigate up";
-
+            SEARCH_CANSEL_BUTTON = "Navigate up",
+            SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL = "//*[(@text, '{TITLE}')]/following-sibling::*[contains(@text, '{DESCRIPTION}')]";
 
 
     public SearchPageObject(AppiumDriver driver) {
         super(driver);
     }
+
 
     private static String getSearchResultElementByText(String substing) {
         return SEARCH_RESULT_BY_SUBSTRING_TPL.replace("{SUBSTRING}", substing);
@@ -58,7 +60,19 @@ public class SearchPageObject extends MainPageObject {
         String searchResult = getSearchResultElementByText(substirng);
         this.waitForElementAndClick(By.xpath(searchResult), "не видим нужной статьи и не нажимаем на нее " + substirng, 5);
     }
-    public void clickSaveButton(){
-        this.waitForElementAndClick(By.id("org.wikipedia:id/page_save"),"не сохранили статью",5);
+
+
+    private static String getSearchResultElement(String title, String description) {
+        return SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL.replace("{TITLE}", title).replace("{DESCRIPTION}", description);
+
     }
+
+    public void waitForElementByTitleAndDescription(String title, String description) {
+        String searchResultByXpath = getSearchResultElement(title, description);
+        this.waitForElementPresent(By.xpath(searchResultByXpath), "не нашли статью с " + title + " и таким описанием " + description, 10);
+
+
+    }
+
+
 }
